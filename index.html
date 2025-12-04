@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎉 ¡Feliz 21 Nay! 🎉</title>
+
+  <style>
+    .gallery img{
+  width: 100%;
+  height: 190px;      /* Más bajito = más horizontal */
+  object-fit: cover;  /* Recorta manteniendo forma */
+  border-radius: 14px;
+  display: block;
+}
+
+
+    :root{
+      --bg1:#240046;
+      --bg2:#3c096c;
+      --accent:#ff6bcd;
+      --accent2:#f72585;
+      --glass:rgba(255,255,255,0.06);
+      --text:#fff;
+      --muted:#e0b7f7;
+      font-family:'Poppins',sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      background:linear-gradient(145deg,var(--bg1),var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* HERO */
+    .hero{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      text-align:center;
+    }
+    .hero h1{
+      font-size:48px;
+      max-width:90%;
+      animation:fadeIn 2.5s ease;
+    }
+    .hero h2{
+      margin-top:10px;
+      font-weight:300;
+      font-size:22px;
+      color:var(--muted);
+      animation:fadeIn 3s ease;
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    .btn{
+      margin-top:40px;
+      background:var(--accent);
+      padding:15px 30px;
+      border:0;
+      border-radius:14px;
+      font-size:20px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.2s;
+      animation:fadeIn 4s ease;
+      color:#1a001f;
+    }
+    .btn:hover{filter:brightness(1.15)}
+
+    section{padding:80px 20px;max-width:960px;margin:auto;text-align:center}
+
+    .glass{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:18px;
+      padding:32px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.35);
+      margin-top:32px;
+      backdrop-filter:blur(6px);
+    }
+    .big-msg{
+      margin-top:16px;
+      font-size:20px;
+      line-height:1.7;
+      color:#ffe6ff;
+    }
+
+    /* RAZONES COLLAPSABLES */
+    .reason-box{
+      text-align:left;
+      margin-top:18px;
+      padding:16px;
+      background:rgba(255,255,255,0.05);
+      border-radius:14px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .reason-box:hover{
+      background:rgba(255,255,255,0.08);
+    }
+    .reason-text{
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transition:max-height 0.6s ease, opacity 0.6s ease;
+      margin-top:12px;
+      line-height:1.6;
+    }
+    .reason-text.open{
+      max-height:500px;
+      opacity:1;
+    }
+
+    /* SPARKLES */
+    .sparkle{
+      position:fixed;
+      width:6px;height:6px;
+      background:rgba(247,37,133,0.7);
+      border-radius:50%;
+      animation:twinkle 3s infinite ease-in-out;
+      opacity:0.5;
+      pointer-events:none;
+    }
+    @keyframes twinkle{
+      0%,100%{transform:scale(0.3);opacity:0.25}
+      50%{transform:scale(1);opacity:0.7}
+    }
+
+    /* CONFETTI */
+    #confetti{position:fixed;inset:0;pointer-events:none;z-index:5}
+
+    @media(max-width:500px){
+      .hero h1{font-size:36px}
+      .hero h2{font-size:18px}
+      .big-msg{font-size:18px}
+    }
+    .gallery{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 2 columnas obligatorias */
+  gap: 18px;
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+
+<body>
+
+<audio id="music" src="audio/musica.mp3"></audio>
+<canvas id="confetti"></canvas>
+
+<div class="hero">
+  <h1>🎉 ¡Feliz cumpleaños Nay! 🎉</h1>
+  <h2>Hoy celebramos tu luz, tu energía y tus 21 años ✨</h2>
+  <button class="btn" id="startBtn">Haz clic para tu sorpresa 💗</button>
+</div>
+
+<section id="surprise" style="display:none">
+
+  <!-- MENSAJE LARGO -->
+  <div class="glass">
+    <h2>Para ti, que eres magia… ✨</h2>
+    <p class="big-msg">
+      Hoy, 4 de diciembre, no solo cumples 21 años…  
+      Hoy florece un nuevo capítulo en tu historia.  
+      Un capítulo donde cada paso tuyo tiene brillo, donde cada sueño que guardas empieza a tomar forma y donde cada parte de ti encuentra su espacio para ser luz.  
+      <br><br>
+      Eres de esas personas que no necesitan hacer ruido para impactar.  
+      Tienes una manera suave y real de llegar, de tocar, de inspirar…  
+      De hacer sentir paz.  
+      <br><br>
+      Ojalá este día te recuerde no solo lo hermosa que eres por fuera, sino todo lo que llevas dentro: tu fuerza, tu sensibilidad, tu forma tan tuya de ver el mundo.
+    </p>
+  </div>
+
+  <!-- GALERÍA -->
+  <div class="glass">
+    <h2>Momentos donde tu luz brilla 💕</h2>
+    <div class="gallery">
+      <img src="img/foto1.png" />
+        <img src="img/img2.png" />
+        <img src="img/foto3.png" />
+
+    </div>
+  </div>
+
+  <!-- RAZONES CON CLICK -->
+  <div class="glass">
+    <h2>10 razones por las que eres especial 💖</h2>
+
+    <div class="reason-box" onclick="toggleReason(1)">Haz clic para ver las razones ✨</div>
+
+    <div id="reason1" class="reason-text">
+      1. Tu sonrisa ilumina cualquier lugar.<br>
+      2. Tienes una forma única de hablar que alegra a cualquiera.<br>
+      3. Tu risa es de las cosas más lindas del mundo.<br>
+      4. La energía que transmites es incomparable.<br>
+      5. Eres fuerte incluso cuando no lo notas.<br>
+      6. Das paz con solo estar ahí.<br>
+      7. Tienes un corazón enorme y sincero.<br>
+      8. Te preocupas por quienes quieres de verdad.<br>
+      9. Haces especiales los días normales.<br>
+      10. Eres tú… y eso ya es demasiado increíble.
+    </div>
+  </div>
+
+  <!-- DESEO MÁS LARGO -->
+  <div class="glass">
+    <h2>Mi deseo para ti 🎂✨</h2>
+    <p class="big-msg">
+      Deseo que este año esté lleno de descubrimientos que te hagan feliz.  
+      Que encuentres caminos que te sorprendan, personas que te abracen desde el alma, y momentos que te recuerden tu propio valor.  
+      <br><br>
+      Deseo que tus sueños se acerquen a ti con suavidad pero con fuerza, que nada te quite la paz, que nada opaque tu brillo, y que siempre tengas razones para sonreír incluso en los días más simples.
+      <br><br>
+      Porque mereces lo bonito, lo bueno, lo sincero… y todo lo que algún día imaginaste.
+    </p>
+  </div>
+
+</section>
+
+<script>
+  const startBtn=document.getElementById('startBtn');
+  const surprise=document.getElementById('surprise');
+  const music=document.getElementById('music');
+
+  startBtn.addEventListener('click',()=>{
+    surprise.style.display='block';
+    startBtn.style.display='none';
+    window.scrollTo({top:window.innerHeight,behavior:'smooth'});
+    music.play();
+    startConfetti();
+    spawnSparkles();
+  });
+music.volume = 0.25;   // volumen a 25% (0.0 a 1.0)
+
+  /* RAZONES */
+  function toggleReason(id){
+    const box=document.getElementById("reason"+id);
+    box.classList.toggle("open");
+  }
+
+  /* SPARKLES */
+  function spawnSparkles(){
+    setInterval(()=>{
+      const s=document.createElement('div');
+      s.className='sparkle';
+      s.style.left=Math.random()*100+'vw';
+      s.style.top=Math.random()*100+'vh';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),3000);
+    },500);
+  }
+
+  /* CONFETTI */
+  const canvas=document.getElementById('confetti');
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  let confetti=[];
+
+  function addConfetti(){
+    for(let i=0;i<150;i++){
+      confetti.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*-canvas.height,
+        r:Math.random()*7+3,
+        c:`rgba(${255},${105+Math.random()*80},${180+Math.random()*40},0.55)`,
+        vx:(Math.random()-0.5)*1.6,
+        vy:Math.random()*2.5+1.5
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c;
+      ctx.fill();
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.vy+=0.01;
+      if(p.y>canvas.height+20) p.y=-10;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  function startConfetti(){addConfetti();draw();}
+</script>
+</body>
+</html>
